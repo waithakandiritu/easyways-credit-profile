@@ -1,4 +1,5 @@
 import { PageHero } from "../components/PageHero";
+import { Stagger, StaggerItem } from "../components/Motion";
 import { privacySections, termsSections, type LegalSection } from "../data/legal";
 
 function LegalPage({
@@ -14,14 +15,14 @@ function LegalPage({
     <>
       <PageHero eyebrow="Legal" title={title} intro={intro} />
       <section className="container-page py-24">
-        <div className="max-w-3xl mx-auto space-y-10">
+        <Stagger stagger={0.06} className="max-w-3xl mx-auto space-y-10">
           {sections.map((section) => (
-            <article key={section.title}>
+            <StaggerItem as="article" key={section.title} y={12}>
               <h2 className="font-serif text-2xl text-navy">{section.title}</h2>
               <p className="mt-3 text-[15px] text-slate leading-relaxed">{section.body}</p>
-            </article>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </section>
     </>
   );

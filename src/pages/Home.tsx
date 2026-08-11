@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { Icon, type IconName } from "../components/Icon";
 import { Logo } from "../components/Logo";
+import { Reveal, Stagger, StaggerItem } from "../components/Motion";
 import { productPreviews, type ProductPreview } from "../data/products";
 import { APPLY_URL } from "../data/nav";
 
@@ -26,22 +27,25 @@ function Hero() {
       <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
       <div className="container-page relative pt-20 pb-24 lg:pt-28 lg:pb-32">
         <div className="grid gap-16 lg:grid-cols-12 lg:gap-10 items-center">
-          <div className="lg:col-span-7">
-            <div className="reveal inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-white/80">
+          <Stagger className="lg:col-span-7">
+            <StaggerItem className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-white/80">
               <Icon name="shield" className="h-3.5 w-3.5 text-gold" />
               Licensed by the Central Bank of Kenya · DCP Regulated
-            </div>
-            <h1 className="reveal reveal-d1 mt-7 font-serif text-[44px] leading-[1.05] sm:text-[58px] md:text-[68px] lg:text-[76px] text-balance">
+            </StaggerItem>
+            <StaggerItem
+              as="h1"
+              className="mt-7 font-serif text-[44px] leading-[1.05] sm:text-[58px] md:text-[68px] lg:text-[76px] text-balance"
+            >
               Fast credit.
               <br />
               <span className="text-gold-soft italic">Your way,</span> anytime.
-            </h1>
-            <p className="reveal reveal-d2 mt-6 max-w-xl text-[15.5px] leading-relaxed text-white/70">
+            </StaggerItem>
+            <StaggerItem as="p" className="mt-6 max-w-xl text-[15.5px] leading-relaxed text-white/70">
               From a logbook loan to keep your business moving, to an emergency top-up before salary,
               to credit secured against your digital assets — EasyWays gives employed Kenyans and
               entrepreneurs real, regulated credit, disbursed straight to M-Pesa.
-            </p>
-            <div className="reveal reveal-d3 mt-9 flex flex-wrap items-center gap-3">
+            </StaggerItem>
+            <StaggerItem className="mt-9 flex flex-wrap items-center gap-3">
               <a
                 href={APPLY_URL}
                 className="group inline-flex items-center gap-2 rounded-md bg-gold px-6 py-3.5 text-[14px] font-medium text-navy hover:bg-gold-soft transition-colors"
@@ -58,25 +62,31 @@ function Hero() {
               >
                 How it works
               </Link>
-            </div>
-            <div className="reveal reveal-d4 mt-14 grid grid-cols-3 gap-6 border-t border-white/10 pt-8 max-w-xl">
+            </StaggerItem>
+            <StaggerItem className="mt-14 grid grid-cols-3 gap-6 border-t border-white/10 pt-8 max-w-xl">
               <HeroStat value="KSh 180M+" label="Disbursed to date" />
               <HeroStat value="4,500+" label="Customers served" />
               <HeroStat value="KSh 40,000" label="Avg. loan size" />
-            </div>
-          </div>
+            </StaggerItem>
+          </Stagger>
 
           <div className="lg:col-span-5">
-            <div className="reveal reveal-d2 relative mx-auto max-w-md">
+            <Stagger delay={0.2} stagger={0.14} className="relative mx-auto max-w-md">
               <div className="absolute -inset-10 -z-10 bg-gold/10 blur-3xl rounded-full" />
-              <div className="relative rounded-[28px] overflow-hidden border border-white/10 bg-white/5 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)]">
+              <StaggerItem
+                y={24}
+                className="relative rounded-[28px] overflow-hidden border border-white/10 bg-white/5 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)]"
+              >
                 <img
                   src="/assets/hero-kenyan-notes.webp"
                   alt="EasyWays customer using the mobile experience"
                   className="w-full h-[520px] object-cover"
                 />
-              </div>
-              <div className="absolute -left-4 sm:-left-10 top-12 w-[230px] rounded-xl border border-white/10 bg-navy-deep/95 backdrop-blur p-4 shadow-2xl">
+              </StaggerItem>
+              <StaggerItem
+                y={12}
+                className="absolute -left-4 sm:-left-10 top-12 w-[230px] rounded-xl border border-white/10 bg-navy-deep/95 backdrop-blur p-4 shadow-2xl"
+              >
                 <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.16em] text-white/50">
                   <span className="h-1.5 w-1.5 rounded-full bg-success" /> Approved
                 </div>
@@ -85,8 +95,11 @@ function Hero() {
                 <div className="mt-3 flex items-center gap-2 text-[11px] text-gold-soft">
                   <Icon name="check" className="h-3.5 w-3.5" /> Sent to M-Pesa
                 </div>
-              </div>
-              <div className="absolute -right-2 sm:-right-8 bottom-10 w-[210px] rounded-xl border border-white/10 bg-white p-4 shadow-2xl">
+              </StaggerItem>
+              <StaggerItem
+                y={12}
+                className="absolute -right-2 sm:-right-8 bottom-10 w-[210px] rounded-xl border border-white/10 bg-white p-4 shadow-2xl"
+              >
                 <div className="flex items-center justify-between text-[11px]">
                   <span className="text-slate">Interest rate</span>
                   <span className="font-mono text-navy">5% / mo</span>
@@ -102,8 +115,8 @@ function Hero() {
                 <div className="mt-3 h-1 w-full rounded bg-mist">
                   <div className="h-full w-2/3 rounded bg-gold" />
                 </div>
-              </div>
-            </div>
+              </StaggerItem>
+            </Stagger>
           </div>
         </div>
       </div>
@@ -123,7 +136,10 @@ function HeroStat({ value, label }: { value: string; label: string }) {
 function RegulatedStrip() {
   return (
     <section className="border-y border-border bg-mist/60">
-      <div className="container-page py-7 flex flex-col gap-5 md:flex-row md:items-center md:justify-between text-[12px] text-slate">
+      <Reveal
+        y={10}
+        className="container-page py-7 flex flex-col gap-5 md:flex-row md:items-center md:justify-between text-[12px] text-slate"
+      >
         <div className="flex items-center gap-2">
           <Icon name="shield" className="h-4 w-4 text-success" />
           Regulated under the Central Bank of Kenya (Amendment) Act, 2021.
@@ -135,7 +151,7 @@ function RegulatedStrip() {
             </span>
           ))}
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }
@@ -143,24 +159,26 @@ function RegulatedStrip() {
 function ProductsPreview() {
   return (
     <section className="container-page py-24 lg:py-32">
-      <div className="grid gap-10 lg:grid-cols-12 items-end">
-        <div className="lg:col-span-7">
+      <Stagger className="grid gap-10 lg:grid-cols-12 items-end">
+        <StaggerItem className="lg:col-span-7">
           <div className="text-[11px] uppercase tracking-[0.2em] text-slate">Our products</div>
           <h2 className="mt-3 font-serif text-4xl sm:text-5xl text-navy text-balance">
             Credit designed for how Kenyans actually live and earn.
           </h2>
-        </div>
-        <p className="lg:col-span-5 text-[15px] text-slate leading-relaxed">
+        </StaggerItem>
+        <StaggerItem as="p" className="lg:col-span-5 text-[15px] text-slate leading-relaxed">
           Five products, one underwriting standard. Whether you're a salaried professional, a matatu
           owner, a check-off employee or a long-term crypto holder, our policies are built around
           real cash flows — not assumptions.
-        </p>
-      </div>
-      <div className="mt-16 grid gap-6 md:grid-cols-2">
+        </StaggerItem>
+      </Stagger>
+      <Stagger stagger={0.1} className="mt-16 grid gap-6 md:grid-cols-2">
         {productPreviews.map((product) => (
-          <ProductPreviewCard key={product.title} product={product} />
+          <StaggerItem key={product.title} className="h-full">
+            <ProductPreviewCard product={product} />
+          </StaggerItem>
         ))}
-      </div>
+      </Stagger>
     </section>
   );
 }
@@ -170,7 +188,7 @@ function ProductPreviewCard({ product }: { product: ProductPreview }) {
   return (
     <Link
       to="/products"
-      className={`group hover-lift block overflow-hidden rounded-lg border ${
+      className={`group hover-lift block h-full overflow-hidden rounded-lg border ${
         featured ? "border-gold/40 bg-navy text-white" : "border-border bg-white"
       }`}
     >
@@ -263,8 +281,8 @@ function PricingSection() {
   return (
     <section className="bg-navy text-white">
       <div className="container-page py-24 lg:py-28">
-        <div className="grid gap-14 lg:grid-cols-12 items-center">
-          <div className="lg:col-span-5">
+        <Stagger className="grid gap-14 lg:grid-cols-12 items-center">
+          <StaggerItem className="lg:col-span-5">
             <div className="text-[11px] uppercase tracking-[0.2em] text-gold-soft/80">
               Transparent pricing
             </div>
@@ -282,8 +300,8 @@ function PricingSection() {
               See full rate card
               <Icon name="arrowRight" className="h-3.5 w-3.5" />
             </Link>
-          </div>
-          <div className="lg:col-span-7">
+          </StaggerItem>
+          <StaggerItem className="lg:col-span-7">
             <div className="rounded-lg border border-white/10 bg-white/[0.03] overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-[13.5px]">
@@ -311,8 +329,8 @@ function PricingSection() {
             <p className="mt-4 text-[11.5px] text-white/45 font-mono">
               APR varies by product and risk profile. Sample rates shown.
             </p>
-          </div>
-        </div>
+          </StaggerItem>
+        </Stagger>
       </div>
     </section>
   );
@@ -340,21 +358,24 @@ function ThreeSteps() {
   return (
     <section className="container-page py-24 lg:py-32">
       <div className="grid gap-10 lg:grid-cols-12">
-        <div className="lg:col-span-4">
+        <Reveal className="lg:col-span-4">
           <div className="text-[11px] uppercase tracking-[0.2em] text-slate">How it works</div>
           <h2 className="mt-3 font-serif text-4xl sm:text-5xl text-navy text-balance">
             From application to M-Pesa in three steps.
           </h2>
-        </div>
-        <div className="lg:col-span-8 grid gap-px bg-border md:grid-cols-3 rounded-lg overflow-hidden">
+        </Reveal>
+        <Stagger
+          delay={0.1}
+          className="lg:col-span-8 grid gap-px bg-border md:grid-cols-3 rounded-lg overflow-hidden"
+        >
           {steps.map((step) => (
-            <div key={step.n} className="bg-white p-8">
+            <StaggerItem key={step.n} y={12} className="bg-white p-8">
               <div className="font-mono text-[12px] text-gold">{step.n}</div>
               <h3 className="mt-6 font-serif text-2xl text-navy">{step.title}</h3>
               <p className="mt-3 text-[14px] text-slate leading-relaxed">{step.body}</p>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </div>
     </section>
   );
@@ -387,21 +408,21 @@ function ComplianceGrid() {
   return (
     <section className="bg-mist/50 border-y border-border">
       <div className="container-page py-24 lg:py-28">
-        <div className="max-w-2xl">
+        <Reveal className="max-w-2xl">
           <div className="text-[11px] uppercase tracking-[0.2em] text-slate">Built on compliance</div>
           <h2 className="mt-3 font-serif text-4xl sm:text-5xl text-navy text-balance">
             A licensed lender — with the policies to prove it.
           </h2>
-        </div>
-        <div className="mt-14 grid gap-px bg-border rounded-lg overflow-hidden md:grid-cols-2 lg:grid-cols-4">
+        </Reveal>
+        <Stagger className="mt-14 grid gap-px bg-border rounded-lg overflow-hidden md:grid-cols-2 lg:grid-cols-4">
           {compliance.map((item) => (
-            <div key={item.title} className="bg-white p-8">
+            <StaggerItem key={item.title} y={12} className="bg-white p-8">
               <Icon name={item.icon} className="h-5 w-5 text-gold" />
               <h3 className="mt-5 font-serif text-xl text-navy">{item.title}</h3>
               <p className="mt-2 text-[13.5px] text-slate leading-relaxed">{item.body}</p>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </div>
     </section>
   );
@@ -410,19 +431,24 @@ function ComplianceGrid() {
 function ClosingCta() {
   return (
     <section className="container-page py-24 lg:py-32">
-      <div className="relative overflow-hidden rounded-xl bg-navy text-white px-8 py-16 sm:px-16 sm:py-24">
+      <Reveal
+        y={24}
+        className="relative overflow-hidden rounded-xl bg-navy text-white px-8 py-16 sm:px-16 sm:py-24"
+      >
         <div className="absolute inset-0 grid-bg opacity-40" />
         <div className="absolute inset-0 gold-glow" />
-        <div className="relative max-w-2xl">
-          <Logo invert showWordmark={false} className="mb-8" />
-          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-balance">
+        <Stagger delay={0.12} className="relative max-w-2xl">
+          <StaggerItem>
+            <Logo invert showWordmark={false} className="mb-8" />
+          </StaggerItem>
+          <StaggerItem as="h2" className="font-serif text-4xl sm:text-5xl lg:text-6xl text-balance">
             Ready when you are.
-          </h2>
-          <p className="mt-5 text-[15.5px] text-white/70 max-w-lg leading-relaxed">
+          </StaggerItem>
+          <StaggerItem as="p" className="mt-5 text-[15.5px] text-white/70 max-w-lg leading-relaxed">
             Apply in under 10 minutes. Get a decision in real time. Receive funds before your next
             meeting ends.
-          </p>
-          <div className="mt-9 flex flex-wrap gap-3">
+          </StaggerItem>
+          <StaggerItem className="mt-9 flex flex-wrap gap-3">
             <a
               href={APPLY_URL}
               className="inline-flex items-center gap-2 rounded-md bg-gold px-6 py-3.5 text-[14px] font-medium text-navy hover:bg-gold-soft"
@@ -436,9 +462,9 @@ function ClosingCta() {
             >
               Talk to a credit officer
             </Link>
-          </div>
-        </div>
-      </div>
+          </StaggerItem>
+        </Stagger>
+      </Reveal>
     </section>
   );
 }

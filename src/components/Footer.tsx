@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { Logo } from "./Logo";
 import { Icon } from "./Icon";
+import { Reveal, Stagger, StaggerItem } from "./Motion";
 
 const productLinks = [
   "Logbook Loans",
@@ -24,8 +25,8 @@ export function Footer() {
   return (
     <footer className="bg-navy text-white/80 mt-32">
       <div className="container-page py-20">
-        <div className="grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-4">
+        <Stagger stagger={0.1} className="grid gap-12 lg:grid-cols-12">
+          <StaggerItem className="lg:col-span-4">
             <Logo invert />
             <p className="mt-6 max-w-sm text-[14px] leading-relaxed text-white/65">
               EasyWays Credit Limited is a digital credit provider licensed and regulated by the
@@ -39,9 +40,9 @@ export function Footer() {
               <Icon name="whatsapp" className="h-4 w-4 text-gold" />
               Talk to us on WhatsApp
             </a>
-          </div>
+          </StaggerItem>
 
-          <div className="lg:col-span-2">
+          <StaggerItem className="lg:col-span-2">
             <h4 className="text-[12px] uppercase tracking-[0.18em] text-white/50">Products</h4>
             <ul className="mt-5 space-y-3 text-[14px]">
               {productLinks.map((label) => (
@@ -52,9 +53,9 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </StaggerItem>
 
-          <div className="lg:col-span-2">
+          <StaggerItem className="lg:col-span-2">
             <h4 className="text-[12px] uppercase tracking-[0.18em] text-white/50">Company</h4>
             <ul className="mt-5 space-y-3 text-[14px]">
               {companyLinks.map((link) => (
@@ -65,9 +66,9 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </StaggerItem>
 
-          <div className="lg:col-span-4">
+          <StaggerItem className="lg:col-span-4">
             <h4 className="text-[12px] uppercase tracking-[0.18em] text-white/50">Head office</h4>
             <ul className="mt-5 space-y-3 text-[14px] text-white/70">
               <li className="flex items-start gap-3">
@@ -87,11 +88,14 @@ export function Footer() {
                 </a>
               </li>
             </ul>
-          </div>
-        </div>
+          </StaggerItem>
+        </Stagger>
 
         <div className="divider-gold mt-16 opacity-30" />
-        <div className="mt-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between text-[12px] text-white/50">
+        <Reveal
+          y={10}
+          className="mt-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between text-[12px] text-white/50"
+        >
           <p>
             © {new Date().getFullYear()} EasyWays Credit Limited. All rights reserved. Licensed by the
             Central Bank of Kenya as a Digital Credit Provider.
@@ -104,7 +108,7 @@ export function Footer() {
               Terms
             </Link>
           </div>
-        </div>
+        </Reveal>
       </div>
     </footer>
   );

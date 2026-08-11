@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { PageHero } from "../components/PageHero";
 import { Icon, type IconName } from "../components/Icon";
+import { Reveal, Stagger, StaggerItem } from "../components/Motion";
 
 const inputClass =
   "w-full rounded-md border border-border bg-white px-4 py-2.5 text-[14px] text-navy outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition";
@@ -15,7 +16,7 @@ export function Contact() {
       />
       <section className="container-page py-24">
         <div className="grid gap-12 lg:grid-cols-12">
-          <aside className="lg:col-span-5 space-y-8">
+          <Stagger as="aside" className="lg:col-span-5 space-y-8">
             <ContactRow
               icon="mapPin"
               label="Head office"
@@ -44,10 +45,15 @@ export function Contact() {
               label="Business hours"
               lines={["Mon – Fri · 8:00 – 18:00", "Sat · 9:00 – 14:00", "Sun · Closed"]}
             />
-          </aside>
+          </Stagger>
 
           <div className="lg:col-span-7">
-            <form className="rounded-xl border border-border bg-white p-8 sm:p-10 space-y-5">
+            <Reveal
+              as="form"
+              delay={0.12}
+              y={24}
+              className="rounded-xl border border-border bg-white p-8 sm:p-10 space-y-5"
+            >
               <div className="grid sm:grid-cols-2 gap-5">
                 <Field label="Full name">
                   <input className={inputClass} placeholder="Jane Wanjiku" />
@@ -80,18 +86,18 @@ export function Contact() {
               >
                 Send message
               </button>
-            </form>
+            </Reveal>
           </div>
         </div>
 
-        <div className="mt-20 overflow-hidden rounded-xl border border-border">
+        <Reveal y={24} className="mt-20 overflow-hidden rounded-xl border border-border">
           <iframe
             title="EasyWays Credit office location — Trio Complex, Thika Road, behind Garden City Mall"
             src="https://www.openstreetmap.org/export/embed.html?bbox=36.8780%2C-1.2350%2C36.9000%2C-1.2200&layer=mapnik&marker=-1.2275%2C36.8890"
             className="w-full h-[420px] border-0"
             loading="lazy"
           />
-        </div>
+        </Reveal>
       </section>
     </>
   );
@@ -111,7 +117,7 @@ function ContactRow({
   action?: { label: string; href: string };
 }) {
   return (
-    <div>
+    <StaggerItem y={12}>
       <div className="flex items-center gap-2.5">
         <span className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-navy text-gold-soft">
           <Icon name={icon} className="h-4 w-4" />
@@ -132,7 +138,7 @@ function ContactRow({
           <Icon name="arrowRight" className="h-3.5 w-3.5" />
         </a>
       )}
-    </div>
+    </StaggerItem>
   );
 }
 

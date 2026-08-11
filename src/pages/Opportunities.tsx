@@ -1,5 +1,6 @@
 import { PageHero } from "../components/PageHero";
 import { Icon } from "../components/Icon";
+import { Reveal, Stagger, StaggerItem } from "../components/Motion";
 
 export function Opportunities() {
   return (
@@ -10,8 +11,8 @@ export function Opportunities() {
         intro="We are an equal opportunity provider where the right teams matter."
       />
       <section className="container-page py-24">
-        <div className="grid gap-px bg-border rounded-lg overflow-hidden md:grid-cols-2">
-          <div className="bg-white p-10">
+        <Stagger className="grid gap-px bg-border rounded-lg overflow-hidden md:grid-cols-2">
+          <StaggerItem y={12} className="bg-white p-10">
             <Icon name="users" className="h-5 w-5 text-gold" />
             <h3 className="mt-5 font-serif text-2xl text-navy">Equal opportunity</h3>
             <p className="mt-3 text-[14.5px] text-slate leading-relaxed">
@@ -19,18 +20,21 @@ export function Opportunities() {
               tribe never factor into our decisions — only the strength of the team you help us
               build.
             </p>
-          </div>
-          <div className="bg-white p-10">
+          </StaggerItem>
+          <StaggerItem y={12} className="bg-white p-10">
             <Icon name="calendar" className="h-5 w-5 text-gold" />
             <h3 className="mt-5 font-serif text-2xl text-navy">Coming up</h3>
             <p className="mt-3 text-[14.5px] text-slate leading-relaxed">
               Upcoming opportunities shall be communicated soon. In the meantime, send your CV and a
               short note about how you'd add value — we keep a live pipeline.
             </p>
-          </div>
-        </div>
+          </StaggerItem>
+        </Stagger>
 
-        <div className="mt-16 rounded-xl border border-border bg-navy text-white p-10 sm:p-14 text-center">
+        <Reveal
+          y={24}
+          className="mt-16 rounded-xl border border-border bg-navy text-white p-10 sm:p-14 text-center"
+        >
           <Icon name="sparkles" className="h-6 w-6 text-gold-soft mx-auto" />
           <h2 className="mt-5 font-serif text-3xl sm:text-4xl">Reach our People &amp; Culture team</h2>
           <p className="mt-3 text-[15px] text-white/70">
@@ -42,7 +46,7 @@ export function Opportunities() {
           >
             hr@easywayscredit.com
           </a>
-        </div>
+        </Reveal>
       </section>
     </>
   );

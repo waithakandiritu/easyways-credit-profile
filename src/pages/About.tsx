@@ -1,5 +1,6 @@
 import { PageHero } from "../components/PageHero";
 import { Icon, type IconName } from "../components/Icon";
+import { Reveal, Stagger, StaggerItem } from "../components/Motion";
 import { team } from "../data/team";
 
 const stats = [
@@ -39,20 +40,22 @@ export function About() {
       {/* Story */}
       <section className="container-page py-24">
         <div className="grid gap-14 lg:grid-cols-12 items-center">
-          <div className="lg:col-span-6">
+          <Reveal y={24} className="lg:col-span-6">
             <img
               src="/assets/about-office.jpg"
               alt="EasyWays Nairobi office"
               loading="lazy"
               className="rounded-xl w-full aspect-[4/3] object-cover border border-border"
             />
-          </div>
-          <div className="lg:col-span-6">
-            <div className="text-[11px] uppercase tracking-[0.2em] text-slate">Our story</div>
-            <h2 className="mt-3 font-serif text-3xl sm:text-4xl text-navy">
+          </Reveal>
+          <Stagger delay={0.1} className="lg:col-span-6">
+            <StaggerItem className="text-[11px] uppercase tracking-[0.2em] text-slate">
+              Our story
+            </StaggerItem>
+            <StaggerItem as="h2" className="mt-3 font-serif text-3xl sm:text-4xl text-navy">
               From a Thika Road office, to KSh 180 million disbursed.
-            </h2>
-            <div className="mt-5 space-y-4 text-[15px] text-slate leading-relaxed">
+            </StaggerItem>
+            <StaggerItem className="mt-5 space-y-4 text-[15px] text-slate leading-relaxed">
               <p>
                 EasyWays was founded by a team of former bankers and engineers who watched too many
                 qualified Kenyans get turned away by traditional lenders. We started with a single
@@ -68,35 +71,38 @@ export function About() {
                 We're still based at Trio Complex — now in a bigger space, 2nd Floor, Room 2-01. We
                 still answer the phone.
               </p>
-            </div>
-          </div>
+            </StaggerItem>
+          </Stagger>
         </div>
       </section>
 
       {/* Mission / values / promise */}
       <section className="bg-mist/50 border-y border-border">
-        <div className="container-page py-24 grid gap-px bg-border rounded-lg overflow-hidden md:grid-cols-3">
+        <Stagger className="container-page py-24 grid gap-px bg-border rounded-lg overflow-hidden md:grid-cols-3">
           {values.map((value) => (
-            <div key={value.title} className="bg-white p-10">
+            <StaggerItem key={value.title} y={12} className="bg-white p-10">
               <Icon name={value.icon} className="h-5 w-5 text-gold" />
               <h3 className="mt-5 font-serif text-2xl text-navy">{value.title}</h3>
               <p className="mt-3 text-[14px] text-slate leading-relaxed">{value.body}</p>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </section>
 
       {/* Leadership */}
       <section className="container-page py-24">
-        <div className="max-w-2xl">
+        <Reveal className="max-w-2xl">
           <div className="text-[11px] uppercase tracking-[0.2em] text-slate">Leadership</div>
           <h2 className="mt-3 font-serif text-3xl sm:text-4xl text-navy">
             The people accountable for your money.
           </h2>
-        </div>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        </Reveal>
+        <Stagger delay={0.1} className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {team.map((member) => (
-            <div key={member.name} className="rounded-lg border border-border bg-white p-6">
+            <StaggerItem
+              key={member.name}
+              className="rounded-lg border border-border bg-white p-6"
+            >
               <div className="text-[15px] font-semibold tracking-tight text-navy">
                 {member.name}
               </div>
@@ -104,23 +110,23 @@ export function About() {
                 {member.role}
               </div>
               <p className="mt-3 text-[13px] text-slate leading-relaxed">{member.note}</p>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </section>
 
       {/* Stats band */}
       <section className="bg-navy text-white">
-        <div className="container-page py-20 grid gap-8 lg:grid-cols-4 text-center">
+        <Stagger stagger={0.1} className="container-page py-20 grid gap-8 lg:grid-cols-4 text-center">
           {stats.map((stat) => (
-            <div key={stat.label}>
+            <StaggerItem key={stat.label} y={12}>
               <div className="font-mono text-2xl text-gold-soft">{stat.value}</div>
               <div className="mt-2 text-[12px] uppercase tracking-[0.16em] text-white/55">
                 {stat.label}
               </div>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </section>
     </>
   );

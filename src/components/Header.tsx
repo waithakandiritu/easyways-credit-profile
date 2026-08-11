@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router";
+import { AnimatePresence, m } from "motion/react";
 import { Logo } from "./Logo";
 import { Icon } from "./Icon";
 import { navLinks, APPLY_URL } from "../data/nav";
@@ -74,23 +75,43 @@ export function Header() {
         </button>
       </div>
 
-      {open && (
-        <div className="lg:hidden border-t border-border bg-white">
-          <div className="container-page py-4 flex flex-col gap-1">
-            {navLinks.map((link) => (
-              <Link key={link.to} to={link.to} className="py-2.5 text-[15px] text-navy">
-                {link.label}
-              </Link>
-            ))}
-            <a
-              href={APPLY_URL}
-              className="mt-3 inline-flex items-center justify-center rounded-md bg-navy px-5 py-3 text-[14px] font-medium text-white"
+      <AnimatePresence initial={false}>
+        {open && (
+          <m.div
+            key="mobile-menu"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.28, ease: [0.2, 0.7, 0.2, 1] }}
+            className="lg:hidden overflow-hidden border-t border-border bg-white"
+          >
+            <m.div
+              initial="hidden"
+              animate="show"
+              variants={{ hidden: {}, show: { transition: { staggerChildren: 0.05 } } }}
+              className="container-page py-4 flex flex-col gap-1"
             >
-              Apply for credit
-            </a>
-          </div>
-        </div>
-      )}
+              {navLinks.map((link) => (
+                <m.div
+                  key={link.to}
+                  variants={{ hidden: { opacity: 0, x: -8 }, show: { opacity: 1, x: 0 } }}
+                >
+                  <Link to={link.to} className="block py-2.5 text-[15px] text-navy">
+                    {link.label}
+                  </Link>
+                </m.div>
+              ))}
+              <m.a
+                href={APPLY_URL}
+                variants={{ hidden: { opacity: 0, y: 8 }, show: { opacity: 1, y: 0 } }}
+                className="mt-3 inline-flex items-center justify-center rounded-md bg-navy px-5 py-3 text-[14px] font-medium text-white"
+              >
+                Apply for credit
+              </m.a>
+            </m.div>
+          </m.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

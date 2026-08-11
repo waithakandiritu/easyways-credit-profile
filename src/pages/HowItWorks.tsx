@@ -1,5 +1,6 @@
 import { PageHero } from "../components/PageHero";
 import { Icon } from "../components/Icon";
+import { Reveal, Stagger, StaggerItem } from "../components/Motion";
 
 const steps = [
   {
@@ -45,23 +46,27 @@ export function HowItWorks() {
         <div className="space-y-16">
           {steps.map((step) => (
             <div key={step.n} className="grid gap-8 lg:grid-cols-12 items-start">
-              <div className="lg:col-span-4 flex items-center gap-5">
+              <Reveal className="lg:col-span-4 flex items-center gap-5">
                 <div className="font-mono text-4xl text-gold">{step.n}</div>
                 <h2 className="font-serif text-2xl sm:text-3xl text-navy">{step.title}</h2>
-              </div>
+              </Reveal>
               <div className="lg:col-span-8">
-                <p className="text-[15px] text-slate leading-relaxed max-w-2xl">{step.body}</p>
-                <ul className="mt-6 flex flex-wrap gap-3">
+                <Reveal as="p" delay={0.1} className="text-[15px] text-slate leading-relaxed max-w-2xl">
+                  {step.body}
+                </Reveal>
+                <Stagger as="ul" delay={0.16} stagger={0.06} className="mt-6 flex flex-wrap gap-3">
                   {step.items.map((item) => (
-                    <li
+                    <StaggerItem
+                      as="li"
                       key={item}
+                      y={10}
                       className="inline-flex items-center gap-2 rounded-full border border-border bg-mist/50 px-4 py-2 text-[13px] text-navy"
                     >
                       <Icon name="check" className="h-3.5 w-3.5 text-gold" />
                       {item}
-                    </li>
+                    </StaggerItem>
                   ))}
-                </ul>
+                </Stagger>
               </div>
             </div>
           ))}

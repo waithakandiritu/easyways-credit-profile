@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { PageHero } from "../components/PageHero";
 import { Icon } from "../components/Icon";
+import { Reveal, Stagger, StaggerItem } from "../components/Motion";
 import { products, type Product } from "../data/products";
 import { APPLY_URL } from "../data/nav";
 
@@ -36,7 +37,7 @@ function ProductBlock({ product, reversed }: { product: Product; reversed: boole
           reversed ? "lg:[&>*:first-child]:order-2" : ""
         }`}
       >
-        <div className="lg:col-span-6">
+        <Reveal y={24} className="lg:col-span-6">
           <div className="relative overflow-hidden rounded-xl border border-border">
             <img
               src={product.img}
@@ -50,33 +51,37 @@ function ProductBlock({ product, reversed }: { product: Product; reversed: boole
               </div>
             )}
           </div>
-        </div>
+        </Reveal>
 
-        <div className="lg:col-span-6">
-          <div className="flex items-center gap-3">
+        <Stagger delay={0.1} className="lg:col-span-6">
+          <StaggerItem className="flex items-center gap-3">
             <span className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-navy text-gold-soft">
               <Icon name={product.icon} className="h-[18px] w-[18px]" />
             </span>
             <div className="text-[11px] uppercase tracking-[0.2em] text-slate">Product</div>
-          </div>
-          <h2 className="mt-4 font-serif text-3xl sm:text-4xl text-navy">{product.title}</h2>
-          <p className="mt-3 text-[15px] text-slate leading-relaxed">{product.tagline}</p>
+          </StaggerItem>
+          <StaggerItem as="h2" className="mt-4 font-serif text-3xl sm:text-4xl text-navy">
+            {product.title}
+          </StaggerItem>
+          <StaggerItem as="p" className="mt-3 text-[15px] text-slate leading-relaxed">
+            {product.tagline}
+          </StaggerItem>
 
-          <div className="mt-7 grid grid-cols-2 sm:grid-cols-4 gap-px bg-border rounded-lg overflow-hidden">
+          <StaggerItem className="mt-7 grid grid-cols-2 sm:grid-cols-4 gap-px bg-border rounded-lg overflow-hidden">
             {stats.map((stat) => (
               <div key={stat.label} className="bg-white p-4">
                 <div className="text-[10.5px] uppercase tracking-wider text-slate">{stat.label}</div>
                 <div className="mt-1 font-mono text-[13px] text-navy">{stat.value}</div>
               </div>
             ))}
-          </div>
+          </StaggerItem>
 
-          <div className="mt-8 grid gap-8 sm:grid-cols-2">
+          <StaggerItem className="mt-8 grid gap-8 sm:grid-cols-2">
             <RequirementList title="Eligibility" items={product.eligibility} />
             <RequirementList title="What you'll need" items={product.requirements} />
-          </div>
+          </StaggerItem>
 
-          <div className="mt-8 rounded-lg border border-border bg-mist/40 p-5">
+          <StaggerItem className="mt-8 rounded-lg border border-border bg-mist/40 p-5">
             <div className="text-[10.5px] uppercase tracking-wider text-slate">
               Repayment example
             </div>
@@ -86,9 +91,9 @@ function ProductBlock({ product, reversed }: { product: Product; reversed: boole
               <ExampleStat k="Per month" v={product.example.monthly} />
               <ExampleStat k="Total payable" v={product.example.total} highlight />
             </div>
-          </div>
+          </StaggerItem>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <StaggerItem className="mt-8 flex flex-wrap gap-3">
             <a
               href={APPLY_URL}
               className="inline-flex items-center gap-2 rounded-md bg-navy px-6 py-3 text-[13.5px] font-medium text-white hover:bg-navy-deep"
@@ -102,8 +107,8 @@ function ProductBlock({ product, reversed }: { product: Product; reversed: boole
             >
               Talk to an officer
             </Link>
-          </div>
-        </div>
+          </StaggerItem>
+        </Stagger>
       </div>
     </section>
   );
