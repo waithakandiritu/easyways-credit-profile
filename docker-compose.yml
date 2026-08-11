@@ -1,0 +1,20 @@
+services:
+  web:
+    build: .
+    image: easyways:latest
+    restart: unless-stopped
+    # Bound to loopback: the host's nginx terminates TLS and proxies to this.
+    # Change to "80:80" only if this container is directly internet-facing.
+    ports:
+      - "127.0.0.1:8080:80"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1/healthz"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
