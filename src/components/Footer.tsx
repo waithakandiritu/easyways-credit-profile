@@ -29,9 +29,9 @@ export function Footer() {
           <StaggerItem className="lg:col-span-4">
             <Logo invert />
             <p className="mt-6 max-w-sm text-[14px] leading-relaxed text-white/65">
-              EasyWays Credit Limited is a digital credit provider licensed and regulated by the
-              Central Bank of Kenya, serving employed Kenyans, entrepreneurs and digital asset
-              holders.
+              EasyWays Credit Limited is a digital credit provider licensed and
+              regulated by the Central Bank of Kenya, serving employed Kenyans,
+              entrepreneurs and digital asset holders.
             </p>
             <a
               href="https://wa.me/254734641449"
@@ -43,7 +43,9 @@ export function Footer() {
           </StaggerItem>
 
           <StaggerItem className="lg:col-span-2">
-            <h4 className="text-[12px] uppercase tracking-[0.18em] text-white/50">Products</h4>
+            <h4 className="text-[12px] uppercase tracking-[0.18em] text-white/50">
+              Products
+            </h4>
             <ul className="mt-5 space-y-3 text-[14px]">
               {productLinks.map((label) => (
                 <li key={label}>
@@ -56,7 +58,9 @@ export function Footer() {
           </StaggerItem>
 
           <StaggerItem className="lg:col-span-2">
-            <h4 className="text-[12px] uppercase tracking-[0.18em] text-white/50">Company</h4>
+            <h4 className="text-[12px] uppercase tracking-[0.18em] text-white/50">
+              Company
+            </h4>
             <ul className="mt-5 space-y-3 text-[14px]">
               {companyLinks.map((link) => (
                 <li key={link.to}>
@@ -69,21 +73,33 @@ export function Footer() {
           </StaggerItem>
 
           <StaggerItem className="lg:col-span-4">
-            <h4 className="text-[12px] uppercase tracking-[0.18em] text-white/50">Head office</h4>
+            <h4 className="text-[12px] uppercase tracking-[0.18em] text-white/50">
+              Head office
+            </h4>
             <ul className="mt-5 space-y-3 text-[14px] text-white/70">
               <li className="flex items-start gap-3">
-                <Icon name="mapPin" className="mt-0.5 h-4 w-4 text-gold flex-shrink-0" />
-                Trio Complex, Thika Road, behind Garden City Mall, Nairobi, Kenya
+                <Icon
+                  name="mapPin"
+                  className="mt-0.5 h-4 w-4 text-gold flex-shrink-0"
+                />
+                Trio Complex, Thika Road, behind Garden City Mall, Nairobi,
+                Kenya
               </li>
               {phones.map((phone) => (
                 <li key={phone} className="flex items-center gap-3">
-                  <Icon name="phone" className="h-4 w-4 text-gold flex-shrink-0" />
+                  <Icon
+                    name="phone"
+                    className="h-4 w-4 text-gold flex-shrink-0"
+                  />
                   <span className="font-mono">{phone}</span>
                 </li>
               ))}
               <li className="flex items-center gap-3">
                 <Icon name="mail" className="h-4 w-4 text-gold flex-shrink-0" />
-                <a href="mailto:support@easywayscredit.com" className="hover:text-gold-soft">
+                <a
+                  href="mailto:support@easywayscredit.com"
+                  className="hover:text-gold-soft"
+                >
                   support@easywayscredit.com
                 </a>
               </li>
@@ -97,11 +113,12 @@ export function Footer() {
           className="mt-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between text-[12px] text-white/50"
         >
           <p>
-            © {new Date().getFullYear()} EasyWays Credit Limited. All rights reserved. Licensed by the
-            Central Bank of Kenya as a Digital Credit Provider.
+            © {new Date().getFullYear()} EasyWays Credit Limited. All rights
+            reserved. Licensed by the Central Bank of Kenya as a Digital Credit
+            Provider.
           </p>
           <div className="flex gap-5">
-            <Link to="/privacy" className="hover:text-white">
+            <Link to="/privacy-policy" className="hover:text-white">
               Privacy
             </Link>
             <Link to="/terms" className="hover:text-white">

@@ -1,41 +1,202 @@
-export type LegalSection = { title: string; body: string };
+export type LegalTable = { headers: string[]; rows: string[][] };
+
+export type LegalSection = {
+  title: string;
+  body: string;
+  bullets?: string[];
+  table?: LegalTable;
+  footnote?: string;
+};
+
+export const privacyEffectiveDate = "6 April 2026";
 
 export const privacySections: LegalSection[] = [
   {
-    title: "1. Who we are",
-    body: 'EasyWays Credit Limited ("EasyWays", "we", "us") is a private limited company incorporated in Kenya and licensed by the Central Bank of Kenya as a Digital Credit Provider. Our registered office is at Trio Complex, Thika Road, behind Garden City Mall, Nairobi.',
+    title: "1. Introduction",
+    body: 'This Privacy Policy explains how EasyWays Credit Limited ("EasyWays", "we", "us", "our"), operating the EasyWays digital lending platform, collects, uses, discloses and protects your personal data in compliance with the Kenya Data Protection Act, 2019 (the "Act") and the regulations made thereunder. By using our mobile application or web portal you consent to the practices described herein.',
   },
   {
-    title: "2. What data we collect",
-    body: "We collect personal data you provide directly (name, ID, contact, employment, income), data we collect automatically when you use our platform (device data, IP, usage), and data we receive from third parties (CRBs, IPRS, payment processors).",
+    title: "2. Data Controller",
+    body: "EasyWays Credit Limited is the data controller for the personal data described in this policy. Our registered office is at Trio Complex, Thika Road, behind Garden City Mall, Nairobi.",
+    bullets: [
+      "Data Controller: EasyWays Credit Limited",
+      "Contact: support@easywayscredit.com / +254 734 641 449",
+      "Data Protection Officer: support@easywayscredit.com",
+      "Office of the Data Protection Commissioner (ODPC), P.O. Box 93476-10101, Nairobi, Kenya — complaints@odpc.go.ke",
+    ],
   },
   {
-    title: "3. Why we collect it",
-    body: "To assess your loan application, comply with CBK and AML/CFT obligations, service your loan, contact you about your account, prevent fraud, and improve our products.",
+    title: "3. Personal Data We Collect",
+    body: "We collect the following categories of personal data:",
+    table: {
+      headers: ["Category", "Examples"],
+      rows: [
+        [
+          "Identity data",
+          "Full name, national ID / passport number, date of birth, gender, photograph",
+        ],
+        ["Contact data", "Phone number, email address, postal address"],
+        [
+          "Financial data",
+          "Loan account details, repayment history, savings balances, M-Pesa transaction records",
+        ],
+        [
+          "Device data",
+          "Device model, OS version, push notification token, IP address",
+        ],
+        ["Usage data", "App usage patterns, login timestamps, pages visited"],
+        [
+          "Biometric data",
+          "Fingerprint templates (stored locally on your device only — never transmitted to our servers)",
+        ],
+      ],
+    },
   },
   {
-    title: "4. Lawful basis",
-    body: "We process your data on the basis of contract performance, legal obligation, and your explicit consent where required. You may withdraw consent at any time, subject to legal retention requirements.",
+    title: "4. Legal Basis for Processing",
+    body: "In line with section 30 of the Data Protection Act, 2019, we process your personal data on the following lawful bases:",
+    bullets: [
+      "Consent (s.30(1)(a)) — you provide explicit consent when you register and accept these terms.",
+      "Performance of a contract (s.30(1)(b)) — processing is necessary to administer your loan and savings accounts.",
+      "Legal obligation (s.30(1)(c)) — we are required by the Central Bank of Kenya (CBK) and other regulators to maintain records.",
+      "Legitimate interest (s.30(1)(f)) — fraud prevention, credit risk assessment and service improvement.",
+    ],
   },
   {
-    title: "5. Sharing",
-    body: "We share your data only with: credit reference bureaus, payment processors, regulators, and service providers bound by confidentiality. We do not sell your data.",
+    title: "5. How We Use Your Data",
+    body: "Your personal data is used to:",
+    bullets: [
+      "Open and manage loan and savings accounts",
+      "Process loan disbursements and repayments via M-Pesa",
+      "Send transactional SMS and push notifications (payment reminders, receipts)",
+      "Perform credit scoring and affordability assessments",
+      "Comply with regulatory reporting requirements (CBK, ODPC)",
+      "Detect and prevent fraud or money laundering",
+      "Improve our services and app experience",
+    ],
   },
   {
-    title: "6. Retention",
-    body: "We retain your personal data for the duration of your relationship with us, plus seven years thereafter, in line with CBK record-keeping requirements.",
+    title: "6. Data Sharing and Disclosure",
+    body: "We may share your data with:",
+    table: {
+      headers: ["Recipient", "Purpose", "Safeguard"],
+      rows: [
+        [
+          "Safaricom (M-Pesa)",
+          "Payment processing",
+          "Data processing agreement",
+        ],
+        [
+          "Credit reference bureaus (CRBs)",
+          "Credit reporting as required by the Banking Act",
+          "Regulatory mandate",
+        ],
+        [
+          "Cloud service providers",
+          "Data hosting and storage",
+          "Encryption at rest and in transit",
+        ],
+        [
+          "Regulatory bodies (CBK, ODPC, FRC)",
+          "Statutory compliance",
+          "Legal obligation",
+        ],
+        [
+          "Law enforcement",
+          "Court orders, lawful investigations",
+          "Only upon valid legal process",
+        ],
+      ],
+    },
+    footnote: "We do not sell your personal data to third parties.",
   },
   {
-    title: "7. Your rights",
-    body: "Under the Data Protection Act, 2019, you have the right to access, correct, delete or object to the processing of your personal data. To exercise these rights, contact privacy@easywayscredit.co.ke.",
+    title: "7. Cross-Border Data Transfers",
+    body: "Your data may be processed on servers located outside Kenya. Where this occurs, we ensure adequate safeguards are in place in accordance with section 48 of the Act, including:",
+    bullets: [
+      "Standard contractual clauses",
+      "Adequacy determination by the Data Commissioner",
+      "Your explicit consent",
+    ],
   },
   {
-    title: "8. Security",
-    body: "We use industry-standard encryption (TLS in transit, AES-256 at rest), least-privilege access controls and quarterly third-party security reviews.",
+    title: "8. Data Retention",
+    body: "We retain your personal data for the following periods:",
+    table: {
+      headers: ["Data type", "Retention period"],
+      rows: [
+        ["Active account data", "Duration of relationship + 7 years"],
+        ["Loan records", "7 years after loan closure (CBK requirement)"],
+        [
+          "Transaction records",
+          "7 years (Proceeds of Crime and Anti-Money Laundering Act)",
+        ],
+        ["Consent records", "Indefinitely (audit trail)"],
+        [
+          "Device tokens",
+          "Until the device is deregistered or the token expires",
+        ],
+      ],
+    },
+    footnote:
+      "After the retention period, data is securely deleted or anonymised.",
   },
   {
-    title: "9. Contact our DPO",
-    body: "Our Data Protection Officer can be reached at dpo@easywayscredit.co.ke or in person at our Nairobi office.",
+    title: "9. Your Rights",
+    body: "Under Part IV of the Data Protection Act, 2019, you have the right to:",
+    bullets: [
+      "Access your personal data (s.26(a))",
+      "Rectification of inaccurate data (s.26(b))",
+      "Deletion of data no longer necessary (s.26(c)), subject to legal retention requirements",
+      "Restrict or object to processing (s.26(d))",
+      "Data portability — receive your data in a structured format (s.26(e))",
+      "Withdraw consent at any time (s.32), without affecting the lawfulness of prior processing",
+      "Lodge a complaint with the ODPC",
+    ],
+    footnote:
+      "To exercise your rights, contact us using the details in Section 2.",
+  },
+  {
+    title: "10. Data Security",
+    body: "In line with section 41 of the Act, we implement appropriate technical and organisational measures including:",
+    bullets: [
+      "TLS 1.3 encryption for data in transit",
+      "AES-256 encryption for data at rest",
+      "PIN and optional biometric authentication",
+      "Role-based access controls (RBAC)",
+      "Regular security audits and penetration testing",
+      "Incident response procedures with 72-hour breach notification to the ODPC",
+    ],
+  },
+  {
+    title: "11. Children's Data",
+    body: "Our services are not directed at persons under 18 years. We do not knowingly collect data from minors. If we discover that such data has been collected, it will be deleted promptly.",
+  },
+  {
+    title: "12. Automated Decision-Making",
+    body: "We may use automated credit scoring to assess loan eligibility. You have the right to:",
+    bullets: [
+      "Request human review of any automated decision",
+      "Be informed of the logic, significance and consequences of such processing",
+    ],
+  },
+  {
+    title: "13. Cookies and Tracking",
+    body: "Our web portal uses essential cookies for session management. We do not use advertising or tracking cookies. See our Cookie Notice for details.",
+  },
+  {
+    title: "14. Changes to This Policy",
+    body: "We may update this policy periodically. Material changes will be communicated via in-app notification, and the updated policy will be published with a new effective date.",
+  },
+  {
+    title: "15. Contact & Complaints",
+    body: "If you have questions or complaints about this policy, contact:",
+    bullets: [
+      "EasyWays Credit Limited: support@easywayscredit.com / +254 734 641 449",
+      "EasyWays privacy team: support@easywayscredit.com",
+      "Office of the Data Protection Commissioner: complaints@odpc.go.ke | www.odpc.go.ke",
+    ],
+    footnote: "This policy was last updated on 6 April 2026.",
   },
 ];
 

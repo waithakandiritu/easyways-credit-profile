@@ -109,7 +109,7 @@ export const pages: PageSeo[] = [
     priority: 0.7,
   },
   {
-    path: "/privacy",
+    path: "/privacy-policy",
     title: "Privacy Policy — EasyWays Credit",
     description:
       "How EasyWays Credit collects, uses, stores and protects your personal data under the Data Protection Act 2019.",

@@ -41,7 +41,7 @@ export function AppRoutes() {
             <Route path="/opportunities" element={<Opportunities />} />
             <Route path="/faq" element={<Faq />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/privacy-policy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
           </Route>
 
